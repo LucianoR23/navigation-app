@@ -22,6 +22,7 @@ export const StackNavigator = () => {
                 cardStyle: {
                     backgroundColor: 'white',
                 },
+                // headerShown: false,
             }}
             // initialRouteName="Page2"
         >
