@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { DrawerContentComponentProps, DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
-import { StackNavigator } from './StackNavigator';
+// import { StackNavigator } from './StackNavigator';
 import { Settings } from '../screens/Settings';
 import { Image, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 import { styles } from '../theme/appTheme';
+import { BottomTab } from './BottomTab';
 
 const Drawer = createDrawerNavigator();
 
@@ -14,10 +15,10 @@ export const Drawer2 = () => {
 
     return (
         <Drawer.Navigator
-            screenOptions={{ drawerType: (width >= 768) ? 'permanent' : 'front', headerShown: false }}
+            screenOptions={{ drawerType: (width >= 768) ? 'permanent' : 'front'/* , headerShown: false */ }}
             drawerContent={ (props) => <MenuList {...props} /> }
         >
-            <Drawer.Screen options={{ headerShown: false }} name="StackNavigator" component={ StackNavigator } />
+            <Drawer.Screen name="Tabs" component={ BottomTab } />
             <Drawer.Screen name="Settings" component={ Settings } />
         </Drawer.Navigator>
     );
@@ -37,7 +38,7 @@ const MenuList = ({ navigation }: DrawerContentComponentProps) => {
 
 
             <View style={ styles.menuContainer }>
-                <TouchableOpacity onPress={ () => navigation.navigate('StackNavigator') } style={ styles.menuButton }>
+                <TouchableOpacity onPress={ () => navigation.navigate('Tabs') } style={ styles.menuButton }>
                     <Text style={ styles.menuItems }>Stack Navigation</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={ () => navigation.navigate('Settings') } style={ styles.menuButton }>
